@@ -1,9 +1,6 @@
 package project.almostJira.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -16,10 +13,14 @@ public class Task {
     private int id;
     private LocalDateTime created;
     private String title;
+    @OneToOne
     private Project project;
     private String description;
+    @OneToOne
     private TaskStatus taskStatus;
+    @OneToOne
     private TaskPriority taskPriority;
+    @OneToMany
     private Set<User> users;
 
     public int getId() {

@@ -6,6 +6,7 @@ import project.almostJira.models.Project;
 import project.almostJira.repositories.ProjectRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProjectService {
@@ -13,9 +14,19 @@ public class ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
 
-    public List<Project> showAllProjects(){
+    public List<Project> showAllProjects() {
         List<Project> projectList = projectRepository.findAll();
-        return  projectList;
+        return projectList;
+    }
+
+    //    public Project  findById(int id){
+//        List<Project> all = projectRepository.findAll();
+//        Project project = all.get(0);
+//        return project;
+//    }
+    public Project findById(int id) {
+        Project project = projectRepository.findProjectByid(id);
+        return project;
     }
 
 }

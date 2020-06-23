@@ -2,6 +2,9 @@ package project.almostJira.models;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class User {
@@ -10,8 +13,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(unique = true)
+    @Size(min = 4, max = 16)
     private String login;
+
     private String firstName;
+
     private String lastName;
     private String password;
 

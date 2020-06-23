@@ -7,22 +7,23 @@
 
 </head>
 <body>
+<h1> List of all users</h1><br>
+<a href="http://localhost:8080/admin/options/">Go back to options</a><br>
 
 <table border="1">
 
     <tr bgcolor="#7fffd4">
-        <td>User login</td>
-        <td>User First Name</td>
-        <td>User Last Name</td>
+        <td>login</td>
+        <td>Name</td>
+        <td>Last Name</td>
     </tr>
 
     <c:forEach var="user" items="${users}">
         <tr>
             <td>${user.login}</td>
-            <td>${article.firstName}</td>
-            <td>${article.lastName}</td>
-            <td><a href="http://localhost:8080/SpringCMS/article/update/${article.id}">update</a></td>
-            <td><a href="http://localhost:8080/SpringCMS/article/delete/${article.id}">delete</a></td>
+            <td>${user.firstName}</td>
+            <td>${user.lastName}</td>
+            <td><a href="http://localhost:8080/user/delete/${user.id}">delete</a></td>
         </tr>
     </c:forEach>
 

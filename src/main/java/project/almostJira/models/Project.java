@@ -18,7 +18,7 @@ public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private LocalDateTime localDateTime;
     @NotBlank
     private String name;
