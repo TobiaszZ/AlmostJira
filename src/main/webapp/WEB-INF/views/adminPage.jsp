@@ -20,6 +20,15 @@
 <td><a href="http://localhost:8080/user/add">Click</a></td>
 </tr>
 
+<tr>
+<td>Show all projects</td>
+<td><a href="http://localhost:8080/project/showAll">Click</a></td>
+</tr>
+<tr>
+<td>Add project</td>
+<td><a href="http://localhost:8080/project/add">Click</a></td>
+</tr>
+
 
 </table>
 

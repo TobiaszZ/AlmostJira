@@ -1,5 +1,6 @@
 package project.almostJira.models;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.web.PageableDefault;
 
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 import static java.time.LocalDateTime.now;
@@ -19,32 +21,35 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private LocalDateTime localDateTime;
-    @NotBlank
+    private LocalDateTime created;
+    @NotEmpty
     private String name;
-    @NotBlank
+    @NotEmpty
     private String description;
     private String wwwPage;
     private String projectId;
-    @OneToMany
-    private Set<User> userSet;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<User> userList;
     private boolean active;
 
 
-    public int getId() {
+    public Project() {
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
+    public LocalDateTime getCreated() {
+        return created;
     }
 
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
     }
 
     public String getName() {
@@ -79,12 +84,12 @@ public class Project {
         this.projectId = projectId;
     }
 
-    public Set<User> getUserSet() {
-        return userSet;
+    public List<User> getUserList() {
+        return userList;
     }
 
-    public void setUserSet(Set<User> userSet) {
-        this.userSet = userSet;
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
     }
 
     public boolean isActive() {

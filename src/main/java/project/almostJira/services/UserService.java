@@ -13,12 +13,24 @@ import project.almostJira.models.User;
 import project.almostJira.repositories.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    public User findById(int id){
+        User user = userRepository.findUserById(id);
+        return user;
+
+    }
+
+    public void addAdmin(User user){
+
+
+    }
 
 
     // show all users
@@ -43,6 +55,11 @@ public class UserService {
     private String hashPassword(String password){
         String hashedPassword = BCrypt.hashpw(password,BCrypt.gensalt());
         return hashedPassword;
+    }
+
+    public List<User> getAllUsers(){
+        List<User> all = userRepository.findAll();
+        return all;
     }
 
 }

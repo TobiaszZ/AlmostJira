@@ -18,5 +18,11 @@ public class TaskPriorityService {
         return taskPriorityList;
     }
 
+    public void saveTaskPriority(TaskPriority taskPriority){
+        taskPriorityRepository.save(taskPriority);
+
+    }
+
+
 
 }

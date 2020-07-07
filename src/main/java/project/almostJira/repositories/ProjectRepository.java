@@ -5,6 +5,6 @@ import project.almostJira.models.Project;
 
 public interface ProjectRepository extends JpaRepository<Project, Integer> {
 
-public Project findProjectByid(int id);
+ Project findProjectByid(int id);
 
 }

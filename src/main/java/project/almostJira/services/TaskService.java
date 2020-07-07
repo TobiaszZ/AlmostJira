@@ -18,4 +18,8 @@ public class TaskService {
         return taskList;
     }
 
+    public void saveTask(Task task){
+        taskRepository.save(task);
+    }
+
 }

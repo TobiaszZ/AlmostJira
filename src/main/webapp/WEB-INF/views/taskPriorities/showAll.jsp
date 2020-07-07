@@ -7,8 +7,22 @@
 
 </head>
 <body>
-<h1 align="center">Testowy widok JSP z dodaym bootstrapem</h1>
+<h1> List of all users</h1><br>
+<a href="http://localhost:8080/admin/options/">Go back to options</a><br>
 
+<table border="1">
+
+    <tr bgcolor="#7fffd4">
+        <td>Name</td>
+    </tr>
+
+    <c:forEach var="taskPriority" items="${taskPriorities}">
+        <tr>
+            <td>${taskPriority.name}</td>
+        </tr>
+    </c:forEach>
+
+</table>
 
 
 
@@ -18,4 +32,3 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body>
 </html>
-

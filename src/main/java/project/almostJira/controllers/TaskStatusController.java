@@ -3,6 +3,10 @@ package project.almostJira.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import project.almostJira.models.TaskStatus;
 import project.almostJira.services.TaskStatusService;
@@ -21,5 +25,24 @@ public class TaskStatusController {
         model.addAttribute("taskStatuses" ,taskStatuses);
         return "/taskStatus/showAll";
     }
+
+    @GetMapping("/add")
+    public String addTaskStatus(Model model){
+        model.addAttribute("taskStatus",new TaskStatus());
+        return "/taskStatus/addForm";
+    }
+
+    @PostMapping("/add")
+    public String procesTaskStatus(@Validated TaskStatus taskStatus, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "/add";
+        }else {
+            taskStatusService.saveTaskStatus(taskStatus);
+            return "redirect:/admin/options";
+        }
+
+    }
+
+
 
 }

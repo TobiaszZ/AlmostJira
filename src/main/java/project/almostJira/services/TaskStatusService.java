@@ -13,9 +13,13 @@ public class TaskStatusService {
     private TaskStatusRepository taskStatusRepository;
 
 
-    public List<TaskStatus> showAllTaskStatus(){
+    public List<TaskStatus> showAllTaskStatus() {
         List<TaskStatus> taskStatusList = taskStatusRepository.findAll();
         return taskStatusList;
+    }
+
+    public void saveTaskStatus(TaskStatus taskStatus) {
+        taskStatusRepository.save(taskStatus);
     }
 
 }
