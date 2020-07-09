@@ -29,6 +29,24 @@
 <td><a href="http://localhost:8080/project/add">Click</a></td>
 </tr>
 
+<tr>
+<td>Show all Task status</td>
+<td><a href="http://localhost:8080/taskStatus/showAll">Click</a></td>
+</tr>
+<tr>
+<td>Add Task status</td>
+<td><a href="http://localhost:8080/taskStatus/add">Click</a></td>
+</tr>
+
+<tr>
+<td>Show all Task priorites</td>
+<td><a href="http://localhost:8080/taskPriority/showAll">Click</a></td>
+</tr>
+<tr>
+<td>Add Task priority</td>
+<td><a href="http://localhost:8080/taskPriority/add">Click</a></td>
+</tr>
+
 
 </table>
 

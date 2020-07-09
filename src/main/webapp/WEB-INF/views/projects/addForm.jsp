@@ -8,6 +8,7 @@
 
 </head language ="UTF-8">
 <body>
+<a href="http://localhost:8080/admin/options/">Go back to options</a><br>
 <h1 align="center">add Project</h1>
 <div align="center">
 <form:form method="post" modelAttribute="project">

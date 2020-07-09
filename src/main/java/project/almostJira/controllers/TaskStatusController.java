@@ -20,22 +20,24 @@ public class TaskStatusController {
     @Autowired
     private TaskStatusService taskStatusService;
 
+    @GetMapping("/showAll")
     public String showAllTaskStatus(Model model){
         List<TaskStatus> taskStatuses = taskStatusService.showAllTaskStatus();
         model.addAttribute("taskStatuses" ,taskStatuses);
-        return "/taskStatus/showAll";
+        return "/taskStatuses/showAll";
     }
 
     @GetMapping("/add")
     public String addTaskStatus(Model model){
         model.addAttribute("taskStatus",new TaskStatus());
-        return "/taskStatus/addForm";
+        return "/taskStatuses/addForm";
     }
 
     @PostMapping("/add")
     public String procesTaskStatus(@Validated TaskStatus taskStatus, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            return "/add";
+            return "/taskStatuses/addForm";
+
         }else {
             taskStatusService.saveTaskStatus(taskStatus);
             return "redirect:/admin/options";

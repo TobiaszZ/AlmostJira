@@ -28,7 +28,7 @@ public class Project {
     private String description;
     private String wwwPage;
     private String projectId;
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<User> userList;
     private boolean active;
 

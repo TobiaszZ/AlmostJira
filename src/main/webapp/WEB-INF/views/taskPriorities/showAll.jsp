@@ -7,7 +7,7 @@
 
 </head>
 <body>
-<h1> List of all users</h1><br>
+<h1> List of all Task Priorities</h1><br>
 <a href="http://localhost:8080/admin/options/">Go back to options</a><br>
 
 <table border="1">

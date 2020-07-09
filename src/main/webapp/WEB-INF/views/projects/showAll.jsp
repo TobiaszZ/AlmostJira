@@ -7,7 +7,7 @@
 
 </head>
 <body>
-<h1> List of all users</h1><br>
+<h1> List of all Projects</h1><br>
 <a href="http://localhost:8080/admin/options/">Go back to options</a><br>
 
 <table border="1">
@@ -26,10 +26,9 @@
             <td>${project.name}</td>
             <td>${project.created}</td>
             <td>${project.projectId}</td>
-            td><a href="http://localhost:8080/project/delete/${project.id}">Task List</a></td>
-            td><a href="http://localhost:8080/project/delete/${project.id}">Project Info</a></td>
-            td><a href="http://localhost:8080/project/delete/${project.id}">Edit Project</a></td>
-
+            <td><a href="http://localhost:8080/project/delete/${project.id}">Go to Task List</a></td>
+            <td><a href="http://localhost:8080/project/details/${project.id}"> Get Project Info</a></td>
+            <td><a href="http://localhost:8080/project/delete/${project.id}">Edit Project</a></td>
             <td><a href="http://localhost:8080/project/delete/${project.id}">delete</a></td>
         </tr>
     </c:forEach>

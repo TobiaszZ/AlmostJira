@@ -8,6 +8,7 @@
 
 </head language ="UTF-8">
 <body>
+<a href="http://localhost:8080/admin/options/">Go back to options</a><br>
 <h1 align="center">add User</h1>
 
 <%--@elvariable id="author" type="project.almostJira.model.User"--%>

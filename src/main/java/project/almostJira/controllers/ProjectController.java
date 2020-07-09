@@ -11,6 +11,7 @@ import project.almostJira.models.User;
 import project.almostJira.services.ProjectService;
 import project.almostJira.services.UserService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -40,7 +41,7 @@ public class ProjectController {
 
     }
     @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable int id){
+    public String deleteProject(@PathVariable int id){
         projectService.deleteProject(id);
         return "redirect:/project/showAll";
     }
@@ -60,4 +61,14 @@ public class ProjectController {
             return "redirect:/admin/options";
         }
     }
+
+    @GetMapping("/details/{id}")
+    public String showProjectDetails(@PathVariable int id, Model model){
+        Project byId = projectService.findById(id);
+        List<Project> oneElementLIst = new ArrayList<>();
+        oneElementLIst.add(byId);
+        model.addAttribute("project", oneElementLIst);
+        return "projects/projectDetails";
+    }
+
 }
