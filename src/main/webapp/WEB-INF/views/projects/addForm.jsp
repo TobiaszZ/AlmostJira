@@ -9,18 +9,20 @@
 </head language ="UTF-8">
 <body>
 <a href="http://localhost:8080/admin/options/">Go back to options</a><br>
+<a href="http://localhost:8080/project/showAll">Back</a>
 <h1 align="center">add Project</h1>
 <div align="center">
 <form:form method="post" modelAttribute="project">
 Project name:<br>
 <form:input path = "name" /><br>
 <form:errors path = "name"/>
+Project description:<br>
 <form:textarea path ="description" rows="5" cols="20"/><br>
 <form:errors path = "description"/>
+Project www Page: <br>
 <form:input path = "wwwPage" /><br>
 <form:errors path = "wwwPage"/>
-<form:checkbox path = "active" /><br>
-<form:errors path = "active"/>
+Select users for project:<br>
 <form:select itemValue="id" itemLabel="login" path="userList" items="${users}" /><br>
 <form:errors path = "userList"/>
 <form:hidden path="id"/>
@@ -33,5 +35,4 @@ Project name:<br>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body>
 </html>
-
 

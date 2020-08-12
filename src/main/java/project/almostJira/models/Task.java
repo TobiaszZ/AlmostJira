@@ -2,6 +2,7 @@ package project.almostJira.models;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,7 +22,7 @@ public class Task {
     @OneToOne
     private TaskPriority taskPriority;
     @OneToMany
-    private Set<User> users;
+    private List<User> users;
 
     public int getId() {
         return id;
@@ -79,11 +80,11 @@ public class Task {
         this.taskPriority = taskPriority;
     }
 
-    public Set<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 }

@@ -17,6 +17,7 @@
         <td>Created</td>
         <td>Project Id</td>
         <td>Project Task List</td>
+        <td>Add Task</td>
         <td>Project Info</td>
         <td>Edit Project</td>
     </tr>
@@ -26,9 +27,10 @@
             <td>${project.name}</td>
             <td>${project.created}</td>
             <td>${project.projectId}</td>
-            <td><a href="http://localhost:8080/project/delete/${project.id}">Go to Task List</a></td>
+            <td><a href="http://localhost:8080/task//show/${project.id}">Go to Task List</a></td>
+            <td><a href="http://localhost:8080/task/add/${project.id}">Add Task</a></td>
             <td><a href="http://localhost:8080/project/details/${project.id}"> Get Project Info</a></td>
-            <td><a href="http://localhost:8080/project/delete/${project.id}">Edit Project</a></td>
+            <td><a href="http://localhost:8080/project/update/${project.id}">Edit Project</a></td>
             <td><a href="http://localhost:8080/project/delete/${project.id}">delete</a></td>
         </tr>
     </c:forEach>

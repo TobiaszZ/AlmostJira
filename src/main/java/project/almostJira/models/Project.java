@@ -30,6 +30,8 @@ public class Project {
     private String projectId;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<User> userList;
+    @OneToMany
+    private List<Task> taskList;
     private boolean active;
 
 
@@ -98,5 +100,13 @@ public class Project {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public List<Task> getTaskList() {
+        return taskList;
+    }
+
+    public void setTaskList(List<Task> taskList) {
+        this.taskList = taskList;
     }
 }

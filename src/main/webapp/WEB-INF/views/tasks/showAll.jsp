@@ -7,35 +7,27 @@
 
 </head>
 <body>
-<h1>Project Details</h1><br>
+<h1> List of all Projects</h1><br>
 <a href="http://localhost:8080/admin/options/">Go back to options</a><br>
 <a href="http://localhost:8080/project/showAll">Back</a>
+
 <table border="1">
 
     <tr bgcolor="#7fffd4">
-        <td>Created</td>
         <td>Name</td>
+        <td>Created</td>
         <td>Project Id</td>
-        <td>Description</td>
-        <td>List of users assigned</td>
 
     </tr>
 
-    <c:forEach var="project" items="${project}">
+    <c:forEach var="task" items="${tasks}">
         <tr>
-            <td>${project.created}</td>
-            <td>${project.name}</td>
+            <td>${task.title}</td>
+            <td>${task.created}</td>
             <td>${project.projectId}</td>
-            <td>${project.description}</td>
-            <td>
-
-            <c:forEach var="element" items="${project.userList}">
-            ${element.login}
-            </c:forEach>
-
-            </td>
-
-
+            <td><a href="http://localhost:8080/project/details/${task.id}"> Get Task Info</a></td>
+            <td><a href="http://localhost:8080/project/update/${task.id}">Edit Task</a></td>
+            <td><a href="http://localhost:8080/project/delete/${task.id}">delete</a></td>
         </tr>
     </c:forEach>
 

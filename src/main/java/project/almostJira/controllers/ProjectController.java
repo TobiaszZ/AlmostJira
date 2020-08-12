@@ -61,6 +61,23 @@ public class ProjectController {
             return "redirect:/admin/options";
         }
     }
+    @GetMapping("/update/{id}")
+    public String updateProject(@PathVariable int id,  Model model){
+        Project project = projectService.findById(id);
+        model.addAttribute("project", project);
+        return "projects/addForm";
+    }
+
+    @PostMapping("/update/{id}")
+    public String processUpdateProject(@Validated Project project, BindingResult result ){
+        if (result.hasErrors()){
+            return "projects/addForm";
+        }else{
+            projectService.saveProject(project);
+            return "redirect:/project/showAll";
+        }
+    }
+
 
     @GetMapping("/details/{id}")
     public String showProjectDetails(@PathVariable int id, Model model){
