@@ -59,7 +59,7 @@ public class AlmostJiraApplication {
 			userService.saveUser(user);
 
 		User user2 = new User();
-			user2.setId(2);
+			user2.setId(3);
 			user2.setLogin("user 2");
 			user2.setFirstName("Gal 2");
 			user2.setLastName("anonim 2");

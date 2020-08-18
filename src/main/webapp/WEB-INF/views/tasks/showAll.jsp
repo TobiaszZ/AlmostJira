@@ -7,7 +7,7 @@
 
 </head>
 <body>
-<h1> List of all Projects</h1><br>
+<h1> List of all Tasks for project: ${projectId} </h1><br>
 <a href="http://localhost:8080/admin/options/">Go back to options</a><br>
 <a href="http://localhost:8080/project/showAll">Back</a>
 
@@ -16,7 +16,7 @@
     <tr bgcolor="#7fffd4">
         <td>Name</td>
         <td>Created</td>
-        <td>Project Id</td>
+
 
     </tr>
 
@@ -24,10 +24,10 @@
         <tr>
             <td>${task.title}</td>
             <td>${task.created}</td>
-            <td>${project.projectId}</td>
-            <td><a href="http://localhost:8080/project/details/${task.id}"> Get Task Info</a></td>
-            <td><a href="http://localhost:8080/project/update/${task.id}">Edit Task</a></td>
-            <td><a href="http://localhost:8080/project/delete/${task.id}">delete</a></td>
+            <td><a href="http://localhost:8080/task/showDetails/${task.id}/${idForProject}"> Get Task Info</a></td>
+            <td><a href="http://localhost:8080/task/update/${task.id}/${idForProject}">Edit Task</a></td>
+            <td><a href="http://localhost:8080/task/addUsers/${task.id}/${idForProject}">Add Users</a></td>
+            <td><a href="http://localhost:8080/task/delete/${task.id}/${idForProject}">delete</a></td>
         </tr>
     </c:forEach>
 

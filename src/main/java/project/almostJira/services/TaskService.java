@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.almostJira.models.Project;
 import project.almostJira.models.Task;
+import project.almostJira.models.User;
 import project.almostJira.repositories.TaskRepository;
 
 import java.time.LocalDateTime;
@@ -26,5 +27,55 @@ public class TaskService {
         taskRepository.save(task);
     }
 
+    public void updateTask(Task task){
+        taskRepository.save(task);
+    }
+
+
+
+
+    public Task findTaskById(int id){
+        Task task = taskRepository.findTaskByid(id);
+        return task;
+    }
+
+    public void deleteTask(int id){
+        taskRepository.deleteById(id);
+    }
+
+    public void removeUsersFromProjectTasks(Project project) {
+        List<Task> taskList = project.getTaskList();
+        List<User> projectUserList = project.getUserList();
+
+        for (int i = 0; i < projectUserList.size(); i++) {
+
+            for (Task task : taskList) {
+
+                List<User> taskUsers = task.getUsers();
+
+
+                for (int j = 0; j < taskUsers.size(); j++) {
+                    if (!(projectUserList.contains(taskUsers.get(j)))) {
+                        taskUsers.remove(taskUsers.get(j));
+                    }
+
+                }
+
+                updateTask(task);
+            }
+
+        }
+
+    }
+
+
+    public void addUsersToTask(int id, int idForProject){
+        Task taskById = findTaskById(id);
+        ProjectService projectService = new ProjectService();
+        Project projectById = projectService.findById(idForProject);
+        List<User> userList = projectById.getUserList();
+
+
+    }
 
 }

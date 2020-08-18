@@ -1,5 +1,6 @@
 package project.almostJira.models;
 
+
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.web.PageableDefault;
 

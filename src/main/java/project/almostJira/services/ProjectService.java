@@ -3,6 +3,8 @@ package project.almostJira.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.almostJira.models.Project;
+import project.almostJira.models.Task;
+import project.almostJira.models.User;
 import project.almostJira.repositories.ProjectRepository;
 
 import java.time.LocalDateTime;
@@ -50,6 +52,14 @@ public class ProjectService {
         projectRepository.save(project);
     }
 
+    public void updateProject(Project project){
+        project.setProjectId(createProjectId(project.getName()));
+        Integer id = project.getId();
+
+        projectRepository.save(project);
+
+    }
+
     private String createProjectId(String name){
         String projectId = deletePolishLetters(name);
         projectId= name.replaceAll(" ", "-");
@@ -70,4 +80,37 @@ public class ProjectService {
         }
         return characters.toString();
     }
+
+    public List<Task> findTasksForProject(int id){
+        List<Task> allTasksForProject = projectRepository.findAllTasksForProject(id);
+        return allTasksForProject;
+    }
+
+
+
+//        for(int i = 0 ; i < userList.size(); i++){
+//            List<User> newUsers = new ArrayList<>();
+//            for (Task task: taskList) {
+//
+//                List<User> taskUsers = task.getUsers();
+//
+//                User projectUser = userList.get(i);
+//                for (User taskUser:taskUsers) {
+//                    if(projectUser==taskUser){
+//                        newUsers.add(taskUser);
+//                    }
+//
+//                }
+//
+//            }
+//
+//        }
+
+
+
+
+
+//    public void insertTask(int projectId, int taskId){
+//        projectRepository.insertTasks(projectId, taskId);
+//    }
 }

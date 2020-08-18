@@ -14,14 +14,14 @@ public class Task {
     private int id;
     private LocalDateTime created;
     private String title;
-    @OneToOne
-    private Project project;
+//    @OneToOne
+//    private Project project;
     private String description;
     @OneToOne
     private TaskStatus taskStatus;
     @OneToOne
     private TaskPriority taskPriority;
-    @OneToMany
+    @ManyToMany
     private List<User> users;
 
     public int getId() {
@@ -48,13 +48,13 @@ public class Task {
         this.title = title;
     }
 
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
+//    public Project getProject() {
+//        return project;
+//    }
+//
+//    public void setProject(Project project) {
+//        this.project = project;
+//    }
 
     public String getDescription() {
         return description;

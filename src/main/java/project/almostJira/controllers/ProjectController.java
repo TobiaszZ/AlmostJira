@@ -7,8 +7,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import project.almostJira.models.Project;
+import project.almostJira.models.Task;
 import project.almostJira.models.User;
 import project.almostJira.services.ProjectService;
+import project.almostJira.services.TaskService;
 import project.almostJira.services.UserService;
 
 import java.util.ArrayList;
@@ -23,6 +25,8 @@ public class ProjectController {
     private ProjectService projectService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private TaskService taskService;
 
 
     @ModelAttribute("users")
@@ -73,7 +77,9 @@ public class ProjectController {
         if (result.hasErrors()){
             return "projects/addForm";
         }else{
-            projectService.saveProject(project);
+
+            projectService.updateProject(project);
+            taskService.removeUsersFromProjectTasks(project);
             return "redirect:/project/showAll";
         }
     }

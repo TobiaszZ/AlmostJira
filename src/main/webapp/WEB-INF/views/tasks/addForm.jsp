@@ -9,7 +9,7 @@
 </head language ="UTF-8">
 <body>
 <a href="http://localhost:8080/admin/options/">Go back to options</a><br>
-
+<a href="http://localhost:8080/project/showAll">Back</a>
 <h1 align="center">add Task</h1>
 <div align="center">
 <form:form method="post" modelAttribute="task">
@@ -22,6 +22,7 @@ Task description:<br>
 Select users for task:<br>
 <form:select itemValue="id" itemLabel="login" path="users" items="${task.users}" /><br>
 <form:errors path = "users"/>
+<form:hidden path="created"/>
 <form:hidden path="id"/>
 <input type="submit" value="Ok"><br>
 </form:form>
