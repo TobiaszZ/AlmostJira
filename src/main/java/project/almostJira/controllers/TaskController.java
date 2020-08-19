@@ -113,7 +113,9 @@ public class TaskController {
         Project byId = projectService.findById(idForProject);
         List<User> userList = byId.getUserList();
         Task taskById = taskService.findTaskById(id);
-        model.addAttribute("task", taskById);
+        Task shadowTask = taskById;
+
+        model.addAttribute("task", shadowTask);
         model.addAttribute("usersList", userList);
 
 
@@ -121,12 +123,15 @@ public class TaskController {
     }
 
     @PostMapping("addUsers/{id}/{idForProject}")
-    public String addUsersToTaskProcess(@Validated Task task, BindingResult result){
+    public String addUsersToTaskProcess(@Validated Task task, @PathVariable int idForProject){
+        Task orginalTask = taskService.findTaskById(task.getId());
+        List<User> shadowTaskUserList = task.getUsers();
+        taskService.addUsersToTask(orginalTask,shadowTaskUserList);
 
-            taskService.updateTask(task);
+        taskService.updateTask(orginalTask);
 
 
-        return "redirect:/project/showAll";
+        return "redirect:/task/show/"+idForProject;
     }
 
 

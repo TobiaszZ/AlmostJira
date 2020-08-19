@@ -29,6 +29,7 @@
             <td>${project.projectId}</td>
             <td><a href="http://localhost:8080/task/show/${project.id}">Go to Task List</a></td>
             <td><a href="http://localhost:8080/task/add/${project.id}">Add Task</a></td>
+            <td><a href="http://localhost:8080/project/addUsers/${project.id}">Add Users</a></td>
             <td><a href="http://localhost:8080/project/details/${project.id}"> Get Project Info</a></td>
             <td><a href="http://localhost:8080/project/update/${project.id}">Edit Project</a></td>
             <td><a href="http://localhost:8080/project/delete/${project.id}">delete</a></td>

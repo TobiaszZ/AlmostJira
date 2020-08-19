@@ -37,7 +37,7 @@ public class ProjectService {
 //        return null;
 //    }
 
-    public void deleteProject( int id){
+    public void deleteProject(int id) {
         projectRepository.deleteById(id);
     }
 
@@ -46,13 +46,13 @@ public class ProjectService {
         return project;
     }
 
-    public void saveProject(Project project){
+    public void saveProject(Project project) {
         project.setCreated(LocalDateTime.now());
         project.setProjectId(createProjectId(project.getName()));
         projectRepository.save(project);
     }
 
-    public void updateProject(Project project){
+    public void updateProject(Project project) {
         project.setProjectId(createProjectId(project.getName()));
         Integer id = project.getId();
 
@@ -60,18 +60,18 @@ public class ProjectService {
 
     }
 
-    private String createProjectId(String name){
+    private String createProjectId(String name) {
         String projectId = deletePolishLetters(name);
-        projectId= name.replaceAll(" ", "-");
-        return  projectId;
+        projectId = name.replaceAll(" ", "-");
+        return projectId;
     }
 
-    private String deletePolishLetters(String name){
-        List<Character> characterList = Arrays.asList('ą','ć','ę','ł','ń','ó','ś','ż','ź');
-        List<Character> characters = name.chars().mapToObj(e ->(char)e).collect(Collectors.toList());
-        for(int i =0; i < characters.size();i++){
-            for (Character a: characterList) {
-                if(a==characters.get(i)){
+    private String deletePolishLetters(String name) {
+        List<Character> characterList = Arrays.asList('ą', 'ć', 'ę', 'ł', 'ń', 'ó', 'ś', 'ż', 'ź');
+        List<Character> characters = name.chars().mapToObj(e -> (char) e).collect(Collectors.toList());
+        for (int i = 0; i < characters.size(); i++) {
+            for (Character a : characterList) {
+                if (a == characters.get(i)) {
                     characters.remove(i);
                     break;
                 }
@@ -81,11 +81,21 @@ public class ProjectService {
         return characters.toString();
     }
 
-    public List<Task> findTasksForProject(int id){
+    public List<Task> findTasksForProject(int id) {
         List<Task> allTasksForProject = projectRepository.findAllTasksForProject(id);
         return allTasksForProject;
     }
 
+    public void addUsersToProject(Project project, List<User> list) {
+        List<User> projectUsers = project.getUserList();
+        for (int i = 0; i < list.size(); i++) {
+            if (!(projectUsers.contains(list.get(i)))) {
+                projectUsers.add(list.get(i));
+            }
+        }
+
+
+    }
 
 
 //        for(int i = 0 ; i < userList.size(); i++){
@@ -105,9 +115,6 @@ public class ProjectService {
 //            }
 //
 //        }
-
-
-
 
 
 //    public void insertTask(int projectId, int taskId){

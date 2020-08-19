@@ -69,11 +69,13 @@ public class TaskService {
     }
 
 
-    public void addUsersToTask(int id, int idForProject){
-        Task taskById = findTaskById(id);
-        ProjectService projectService = new ProjectService();
-        Project projectById = projectService.findById(idForProject);
-        List<User> userList = projectById.getUserList();
+    public void addUsersToTask(Task task, List<User> list){
+        List<User> taskUsers = task.getUsers();
+        for (int i = 0 ; i < list.size(); i++){
+            if(!(taskUsers.contains(list.get(i)))){
+                taskUsers.add(list.get(i));
+            }
+        }
 
 
     }

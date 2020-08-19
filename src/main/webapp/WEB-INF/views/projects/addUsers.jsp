@@ -9,16 +9,19 @@
 </head language ="UTF-8">
 <body>
 <a href="http://localhost:8080/admin/options/">Go back to options</a><br>
-<a href="http://localhost:8080/project/showAll">Back</a>
+
 <h1 align="center">add Users</h1>
 <div align="center">
-<form:form method="post" modelAttribute="task">
-<form:hidden path = "title" />
+<form:form method="post" modelAttribute="project">
+<form:hidden path = "name" /><br>
 <form:hidden path ="description" rows="5" cols="20"/><br>
-Select users for task:<br>
-<form:select itemValue="id" itemLabel="login" path="users" items="${usersList}" /><br>
-<form:hidden path="created"/>
+<form:hidden path = "wwwPage" /><br>
+Select users for project:<br>
+<form:select itemValue="id" itemLabel="login" path="userList" items="${users}" /><br>
+<form:errors path = "userList"/>
 <form:hidden path="id"/>
+<form:hidden path="created"/>
+<form:hidden path="taskList"/>
 <input type="submit" value="Ok"><br>
 </form:form>
 </dic>

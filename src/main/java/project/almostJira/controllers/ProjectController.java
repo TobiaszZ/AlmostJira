@@ -94,4 +94,32 @@ public class ProjectController {
         return "projects/projectDetails";
     }
 
+
+    @GetMapping("addUsers/{idForProject}")
+    public String addUsersToTask( @PathVariable int idForProject, Model model){
+        Project orginalProject = projectService.findById(idForProject);
+        Project shadowProject = orginalProject;
+        List<User> allUsers = userService.getAllUsers();
+
+        model.addAttribute("project", shadowProject);
+        model.addAttribute("users", allUsers);
+
+
+        return "projects/addUsers";
+    }
+
+    @PostMapping("addUsers/{idForProject}")
+    public String addUsersToTaskProcess(@Validated Project project){
+        Project orginalProject = projectService.findById(project.getId());
+        List<User> shadowProjectUserList = project.getUserList();
+        projectService.addUsersToProject(orginalProject,shadowProjectUserList);
+
+        projectService.updateProject(orginalProject);
+
+
+        return "redirect:/project/showAll";
+    }
+
+
+
 }
